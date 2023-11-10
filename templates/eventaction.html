@@ -1,0 +1,101 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% for message in get_flashed_messages() %}
+	
+	<div class="alert alert-dark alert-dismissible fade show" role="alert">
+	  {{ message }}
+	  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+	</div>
+
+	
+{% endfor %}
+
+{% if voteevent.status == "open" %}
+    {% if form %}
+    <div class="shadow p-3 mb-5 bg-body rounded">
+        <figure>
+            <blockquote class="blockquote">
+              <p><h1>{{ voteevent.name }}</h1></p>
+            </blockquote>
+            <figcaption class="blockquote-footer">
+              <cite title="Source Title">{{ voteevent.description }}</cite>
+            <br/>
+            </figcaption>
+          </figure>
+        <form method="POST">
+            {{ form.hidden_tag() }}
+    
+            {{ form.selectedparticipant.label(class="form-label") }}
+    
+            {{ form.selectedparticipant(class="form-check") }}
+    
+            {% if form.selectedparticipant.errors %}
+                <ul class="errors">
+                    {% for error in form.selectedparticipant.errors %}
+                        <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+    
+            <br/>
+    
+            {{ form.submit(class="btn btn-primary") }}
+    
+        </form>
+    </div>
+
+    {% else %}
+
+    <h1> You have already casted your vote for this event!</h1>
+    <figure>
+        <blockquote class="blockquote">
+          <p><h1>{{ voteevent.name }}</h1></p>
+        </blockquote>
+        <figcaption class="blockquote-footer">
+          <cite title="Source Title">{{ voteevent.description }}</cite>
+        <br/>
+        </figcaption>
+      </figure>
+
+    {% endif %}
+{% else %}
+<h2>This Event is Closed !</h2>
+
+<figure>
+    <blockquote class="blockquote">
+      <p><h1>{{ voteevent.name }}</h1></p>
+    </blockquote>
+    <figcaption class="blockquote-footer">
+      <cite title="Source Title">{{ voteevent.description }}</cite>
+    <br/>
+    </figcaption>
+  </figure>
+
+  <h3>Below are the candidates who participated in this event:</h3>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Name</th>
+        <th scope="col">Vote Count</th>
+      </tr>
+    </thead>
+    <tbody>
+    {% for participant in participants %}
+      <tr>
+        <td>{{ participant.name }}</td>
+        <td>{{ participant.votecount }}</td>
+      </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+
+  <h1> {{ message }}</h1>
+
+
+{% endif %}
+
+
+
+{% endblock %}

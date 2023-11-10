@@ -1,0 +1,131 @@
+{% extends 'loginBase.html' %}
+
+{% block content %}
+
+{% for message in get_flashed_messages() %}
+	
+	<div class="alert alert-dark alert-dismissible fade show" role="alert">
+	  {{ message }}
+	  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+	</div>
+
+	
+{% endfor %}
+
+
+
+	<h1>Enter details for registration!</h1>
+
+<br/>
+
+<div class="shadow p-3 mb-5 bg-body rounded">
+	<form method="POST">
+		{{ form.hidden_tag() }}
+
+        {{ form.firstname.label(class="form-label") }}
+
+		{{ form.firstname(class="form-control") }}
+
+        {% if form.firstname.errors %}
+            <ul class="errors">
+                {% for error in form.firstname.errors %}
+                    <li>{{ error }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+
+		<br/>
+
+		{{ form.lastname.label(class="form-label") }}
+
+		{{ form.lastname(class="form-control") }}
+
+        {% if form.lastname.errors %}
+            <ul class="errors">
+                {% for error in form.lastname.errors %}
+                    <li>{{ error }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+
+		<br/>
+
+		{{ form.username.label(class="form-label") }}
+
+		{{ form.username(class="form-control") }}
+
+        {% if form.username.errors %}
+            <ul class="errors">
+                {% for error in form.username.errors %}
+                    <li>{{ error }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+
+		<br/>
+
+		{{ form.email.label(class="form-label") }}
+
+		{{ form.email(class="form-control") }}
+
+        {% if form.email.errors %}
+            <ul class="errors">
+                {% for error in form.email.errors %}
+                    <li>{{ error }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+
+		<br/>
+		
+        {{ form.gender.label(class="form-label") }}
+        
+        {{ form.gender(class="form-check") }}
+
+        {% if form.gender.errors %}
+            <ul class="errors">
+                {% for error in form.gender.errors %}
+                    <li>{{ error }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+
+		<br/>
+
+        {{ form.password_hash.label(class="form-label") }}
+
+		{{ form.password_hash(class="form-control") }}
+
+        {% if form.password_hash.errors %}
+        <ul class="errors">
+            {% for error in form.password_hash.errors %}
+                <li>{{ error }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+		<br/>
+
+		{{ form.password_hash2.label(class="form-label") }}
+
+		{{ form.password_hash2(class="form-control") }}
+
+        {% if form.password_hash2.errors %}
+            <ul class="errors">
+                {% for error in form.password_hash2.errors %}
+                    <li>{{ error }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+
+		<br/>
+
+		
+		{{ form.submit(class="btn btn-secondary") }}
+
+	</form>
+</div>
+
+
+
+{% endblock %}

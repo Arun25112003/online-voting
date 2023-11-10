@@ -1,0 +1,193 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% for message in get_flashed_messages() %}
+	
+	<div class="alert alert-dark alert-dismissible fade show" role="alert">
+	  {{ message }}
+	  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+	</div>
+
+	
+{% endfor %}
+
+<div class="shadow p-3 mb-5 bg-body rounded">
+	<form method="POST">
+		{{ form.hidden_tag() }}
+
+        {{ form.name.label(class="form-label") }}
+
+		{{ form.name(class="form-control") }}
+
+        {% if form.name.errors %}
+            <ul class="errors">
+                {% for error in form.name.errors %}
+                    <li>{{ error }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+
+		<br/>
+
+		{{ form.description.label(class="form-label") }}
+
+		{{ form.description(class="form-control") }}
+
+        {% if form.description.errors %}
+            <ul class="errors">
+                {% for error in form.description.errors %}
+                    <li>{{ error }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+
+		<br/>
+
+		{{ form.participant1.label(class="form-label") }}
+
+		{{ form.participant1(class="form-control") }}
+
+        {% if form.participant1.errors %}
+            <ul class="errors">
+                {% for error in form.participant1.errors %}
+                    <li>{{ error }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+
+		<br/>
+
+        {{ form.participant2.label(class="form-label") }}
+
+		{{ form.participant2(class="form-control") }}
+
+        {% if form.participant2.errors %}
+            <ul class="errors">
+                {% for error in form.participant2.errors %}
+                    <li>{{ error }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+
+		<br/>
+
+        {{ form.participant3.label(class="form-label") }}
+
+		{{ form.participant3(class="form-control") }}
+
+        {% if form.participant3.errors %}
+            <ul class="errors">
+                {% for error in form.participant3.errors %}
+                    <li>{{ error }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+
+		<br/>
+
+        {{ form.participant4.label(class="form-label") }}
+
+		{{ form.participant4(class="form-control") }}
+
+        {% if form.participant4.errors %}
+            <ul class="errors">
+                {% for error in form.participant4.errors %}
+                    <li>{{ error }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+
+		<br/>
+
+        {{ form.participant5.label(class="form-label") }}
+
+		{{ form.participant5(class="form-control") }}
+
+        {% if form.participant5.errors %}
+            <ul class="errors">
+                {% for error in form.participant5.errors %}
+                    <li>{{ error }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+
+		<br/>
+
+        {{ form.participant6.label(class="form-label") }}
+
+		{{ form.participant6(class="form-control") }}
+
+        {% if form.participant6.errors %}
+            <ul class="errors">
+                {% for error in form.participant6.errors %}
+                    <li>{{ error }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+
+		<br/>
+
+        {{ form.participant7.label(class="form-label") }}
+
+		{{ form.participant7(class="form-control") }}
+
+        {% if form.participant7.errors %}
+            <ul class="errors">
+                {% for error in form.participant7.errors %}
+                    <li>{{ error }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+
+		<br/>
+
+        {{ form.participant8.label(class="form-label") }}
+
+		{{ form.participant8(class="form-control") }}
+
+        {% if form.participant8.errors %}
+            <ul class="errors">
+                {% for error in form.participant8.errors %}
+                    <li>{{ error }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+
+		<br/>
+
+        {{ form.participant9.label(class="form-label") }}
+
+		{{ form.participant9(class="form-control") }}
+
+        {% if form.participant9.errors %}
+            <ul class="errors">
+                {% for error in form.participant9.errors %}
+                    <li>{{ error }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+
+		<br/>
+
+        {{ form.participant10.label(class="form-label") }}
+
+		{{ form.participant10(class="form-control") }}
+
+        {% if form.participant10.errors %}
+            <ul class="errors">
+                {% for error in form.participant10.errors %}
+                    <li>{{ error }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+
+		<br/>
+
+		
+		{{ form.submit(class="btn btn-secondary") }}
+
+	</form>
+</div>
+
+{% endblock %}

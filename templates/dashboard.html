@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% for message in get_flashed_messages() %}
+	
+	<div class="alert alert-dark alert-dismissible fade show" role="alert">
+	  {{ message }}
+	  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+	</div>
+
+	
+{% endfor %}
+
+<h1>Welcome {{ firstname|upper }} !</h1>
+<br/><br/>
+
+<a button type="button" class="btn btn-primary" href="{{ url_for('createvoteevent') }}">Create Your Own Voting Event!</a>
+<a button type="button" class="btn btn-dark" href="{{ url_for('closevoteevent') }}">Close Your Voting Event!</a>
+
+<br/><br/>
+
+<div class="row row-cols-1 row-cols-md-4 g-4">
+    {% for event in voteevents %}
+    <div class="col">
+        {% if event.status == "open" %}
+      <div class="card border-info">
+        {% else %}
+        <div class="card border-dark">
+        {% endif %}
+        <!-- <img src="..." class="card-img-top" alt="..."> -->
+        <div class="card-body">
+          <h5 class="card-title">{{ event.name }}</h5>
+          <p class="card-text">{{ event.description }}</p>
+          {% if event.status == "open" %}
+          <p class="card-text"><small class="text-body-primary">Status: {{ event.status|upper }}</small></p>
+          <a href="{{ url_for('eventaction', eventid=event.id) }}" class="btn btn-primary">Open</a>
+          {% else %}
+          <p class="card-text"><small class="text-body-dark">Status: {{ event.status|upper }}</small></p>
+          <a href="{{ url_for('eventaction', eventid=event.id) }}" class="btn btn-dark">Open</a>
+          {% endif %}
+        </div>
+      </div>
+    </div> 
+    {% endfor %}
+</div>
+
+
+{% endblock %}
